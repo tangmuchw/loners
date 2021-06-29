@@ -1,0 +1,29 @@
+{
+  "name": "loners-table",
+  "version": "1.0.0",
+  "description": "为工作而生的 table",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tangmuchw/loners"
+  },
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tangmuchw <tangmuchw@163.com> (https://github.com/tangmuchw)",
+  "license": "ISC",
+  "devDependencies": {
+    "antd": "^4.12.3",
+    "react": "^16.14.0"
+  },
+  "dependencies": {
+    "@ant-design/pro-table": "^2.30.0",
+    "history-with-query": "4.10.4"
+  },
+  "peerDependencies": {
+    "antd": "4.x",
+    "react": "^16.x"
+  }
+}

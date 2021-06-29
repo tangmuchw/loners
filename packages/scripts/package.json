@@ -1,0 +1,22 @@
+{
+  "name": "loners-scripts",
+  "version": "1.0.0",
+  "description": "常用的一些工具方法",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangmuchw/loners.git"
+  },
+  "author": "tangmuchw <tangmuchw@163.com> (https://github.com/tangmuchw)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tangmuchw/loners/issues"
+  },
+  "homepage": "https://github.com/tangmuchw/loners#readme",
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}

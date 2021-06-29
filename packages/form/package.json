@@ -1,0 +1,39 @@
+{
+  "name": "loners-form",
+  "version": "1.0.0",
+  "description": "基于 antd 而生的可配置化表单",
+  "keywords": ["antd", "form", "configured"],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tangmuchw/loners"
+  },
+  "files": [
+    "lib",
+    "es",
+    "dist"
+  ],
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 11"
+  ],
+  "dependencies": {
+    "ahooks": "^2.10.6",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.21",
+    "umi": "^3.4.25"
+  },
+  "peerDependencies": {
+    "antd": "4.x",
+    "react": "^16.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "tangmuchw <tangmuchw@163.com> (https://github.com/tangmuchw)",
+  "license": "ISC"
+}
