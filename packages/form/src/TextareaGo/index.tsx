@@ -2,8 +2,8 @@ import React from 'react';
 import { Input } from 'antd';
 import cx from 'classnames';
 import QA from '../QA';
-import { WIDTH_SIZE_ENUM } from '@loners/form/src/constants';
-import type { ShowQA } from '@loners/form/src/interface';
+import { WIDTH_SIZE_ENUM } from '../constants';
+import type { ShowQA } from '../interface';
 import type { TextAreaProps } from 'antd/lib/input/TextArea';
 import styles from '../index.less';
 
