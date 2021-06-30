@@ -25,6 +25,7 @@ function FormTool({
           colProps,
           disabled,
           renderFormItem,
+          render,
           ...formItemProps
         } = omit(child, ['syncToQuery']);
 
@@ -37,7 +38,12 @@ function FormTool({
                 const visible = typeof show === 'function' ? show(fm, extraShowParams) : show;
                 if (!visible) return null;
 
-                if (componentType === 'Customize') return renderFormItem?.(fm, action);
+                if (componentType === 'Customize')
+                  return render ? (
+                    render?.(action)
+                  ) : (
+                    <Form.Item {...formItemProps}>{renderFormItem?.(fm, action)}</Form.Item>
+                  );
 
                 const itemFieldProps = {
                   disabled: disabled?.(action) ?? isReadOnly,
