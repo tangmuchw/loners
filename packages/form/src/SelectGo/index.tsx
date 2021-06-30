@@ -12,7 +12,7 @@ import styles from '../index.less';
 
 const { Option } = Select;
 
-type ValueEnum = Record<string, string | number>;
+type ValueEnum = Record<string, string | number> | Map<string | number, string | number>;
 
 export interface SelectGoProps extends Omit<SelectProps<SelectValue>, 'children'> {
   valueEnum?: ValueEnum;
