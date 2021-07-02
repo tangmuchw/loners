@@ -116,55 +116,13 @@
     "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
   },
   "size-limit": [{
-      "path": "packages/card/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/descriptions/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/field/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
       "path": "packages/form/dist/**/*.js",
       "limit": "100 s",
       "webpack": false,
       "running": false
     },
     {
-      "path": "packages/layout/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/list/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/provider/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/skeleton/dist/**/*.js",
-      "limit": "100 s",
-      "webpack": false,
-      "running": false
-    },
-    {
-      "path": "packages/table/dist/**/*.js",
+      "path": "packages/scripts/dist/**/*.js",
       "limit": "100 s",
       "webpack": false,
       "running": false
