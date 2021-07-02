@@ -2,10 +2,10 @@ import React from 'react';
 import { Input } from 'antd';
 import cx from 'classnames';
 import QA from '../QA';
-import { WIDTH_SIZE_ENUM } from '../constants';
+import { WIDTH_SIZE_ENUM, FORM_ITEM_CLASS_NAME } from '../constants';
 import type { ShowQA } from '../interface';
 import type { TextAreaProps } from 'antd/lib/input/TextArea';
-import styles from '../index.less';
+import '../index.less';
 
 const { TextArea } = Input;
 
@@ -32,8 +32,10 @@ const TextareaGo: React.FC<TextAreaGoProps> = (props) => {
   } = props;
   const ownStyle = fixedWidth ? { width: WIDTH_SIZE_ENUM.s } : style;
 
+  const formItemClassName = FORM_ITEM_CLASS_NAME;
+
   return (
-    <div className={cx(styles.box, { [styles.mgR]: showQA })}>
+    <div className={cx(`${formItemClassName}-box`, { [`${formItemClassName}-mg-r`]: showQA })}>
       <TextArea
         showCount={showCount}
         maxLength={maxLength}
@@ -45,7 +47,7 @@ const TextareaGo: React.FC<TextAreaGoProps> = (props) => {
       />
       {showQA && (
         <QA
-          className={cx(styles.qa, styles.textareaQA)}
+          className={cx(`${formItemClassName}-qa`, `${formItemClassName}-textarea-qa`)}
           title={typeof showQA === 'boolean' ? '' : showQA.title}
         />
       )}

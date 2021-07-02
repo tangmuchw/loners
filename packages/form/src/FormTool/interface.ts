@@ -12,11 +12,9 @@ import type { TextAreaGoProps } from '../TextareaGo';
 import type { InputNumberGoProps } from '../InputNumberGo';
 import type { InputLoadingGoProps } from '../InputLoadingGo';
 
-export interface ExtraShowParams {
-  roles?: any;
-}
+export type FormToolAction = 'edit' | 'add' | 'readonly';
 
-type ShowFunc = (fm: FormInstance, extra?: ExtraShowParams) => boolean;
+export type ShowFunc = (fm: FormInstance, action?: FormToolAction) => boolean;
 
 export type FormItemType =
   | 'InputText'
@@ -68,8 +66,6 @@ export interface FormToolItem extends FormItemProps<any> {
   /** 单独配置将 urlParams 同步到 query request */
   syncToQuery?: boolean | SyncToQueryFunc;
 }
-
-export type FormToolAction = 'edit' | 'add' | 'readonly';
 
 export interface FormToolProps extends RowProps {
   items?: FormToolItem[];

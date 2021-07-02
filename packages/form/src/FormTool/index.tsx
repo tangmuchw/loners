@@ -6,14 +6,7 @@ import FormItem from './FormItem';
 
 import type { FormToolProps, FormToolItem } from './interface';
 
-function FormTool({
-  action,
-  items,
-  className,
-  extraShowParams = {},
-  children,
-  ...rowProps
-}: FormToolProps) {
+function FormTool({ action, items, className, children, ...rowProps }: FormToolProps) {
   const isReadOnly = action === 'readonly';
 
   return (
@@ -35,7 +28,7 @@ function FormTool({
           <Col key={`${name}_${componentType}`} {...colProps}>
             <Form.Item noStyle shouldUpdate>
               {(fm: FormInstance) => {
-                const visible = typeof show === 'function' ? show(fm, extraShowParams) : show;
+                const visible = typeof show === 'function' ? show(fm, action) : show;
                 if (!visible) return null;
 
                 if (componentType === 'Customize')

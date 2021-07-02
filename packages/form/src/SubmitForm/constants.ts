@@ -15,3 +15,5 @@ export const FORM_WIDGET_LAYOUT = {
     sm: { span: 14 },
   },
 };
+
+export const SUBMIT_FORM_CLASS_NAME = 'loners-submit-form';

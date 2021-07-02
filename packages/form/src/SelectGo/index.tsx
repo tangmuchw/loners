@@ -6,9 +6,10 @@ import Multi from './Multi';
 import { WIDTH_SIZE_ENUM } from '../constants';
 import { fromValueEnum } from './utils';
 import type { ShowQA } from '../interface';
+import { FORM_ITEM_CLASS_NAME } from '../constants';
 import type { SelectValue, SelectProps } from 'antd/lib/select';
 import type { AbstractTooltipProps } from 'antd/lib/tooltip';
-import styles from '../index.less';
+import '../index.less';
 
 const { Option } = Select;
 
@@ -76,11 +77,20 @@ const SelectGo: React.FC<SelectGoProps> = (props) => {
     <Select mode={mode} options={opts} {...ownProps} />
   );
 
+  const formItemClassName = FORM_ITEM_CLASS_NAME;
+
   return (
-    <div className={cx(styles.box, { [styles.mgR]: showQA && fixedWidth })}>
+    <div
+      className={cx(`${formItemClassName}-box`, {
+        [`${formItemClassName}-mg-r`]: showQA && fixedWidth,
+      })}
+    >
       {mode === 'multiple' ? <Multi options={opts} tooltip={tooltip} {...ownProps} /> : competent}
       {showQA && (
-        <QA className={styles.qa} title={typeof showQA === 'boolean' ? '' : showQA.title} />
+        <QA
+          className={`${formItemClassName}-qa`}
+          title={typeof showQA === 'boolean' ? '' : showQA.title}
+        />
       )}
     </div>
   );

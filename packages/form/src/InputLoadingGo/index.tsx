@@ -5,9 +5,10 @@ import { useRequest } from 'ahooks';
 import type { FormInstance } from 'antd/lib/form';
 import QA from '../QA';
 import InputNumberGo from '../InputNumberGo';
-import type { ShowQA } from '@loners/form/src/interface';
+import { FORM_ITEM_CLASS_NAME } from '../constants';
+import type { ShowQA } from '../interface';
 import type { InputNumberGoProps } from '../InputNumberGo';
-import styles from '../index.less';
+import '../index.less';
 
 type FetchFuncReturn = {
   url: string;
@@ -62,17 +63,21 @@ const InputLoadingGo: React.FC<InputLoadingGoProps> = (props) => {
     setVisibleTips(false);
   };
 
+  const formItemClassName = FORM_ITEM_CLASS_NAME;
+
   return (
-    <div className={cx(styles.box)}>
+    <div className={`${formItemClassName}-box`}>
       <InputNumberGo onFocus={handleFocus} onBlur={handleBlur} {...rawProps} {...inputState} />
-      <div className={styles.inputLoading}>
+      <div className={`${formItemClassName}-input-loading`}>
         {loading && (
           <>
             <Spin />
-            <span className={styles.loadingTxt}>{request?.loadingText || '正在查询中'}</span>
+            <span className={`${formItemClassName}-loading-txt`}>
+              {request?.loadingText || '正在查询中'}
+            </span>
           </>
         )}
-        {visibleTips && <span className={styles.tips}>{tips}</span>}
+        {visibleTips && <span className={`${formItemClassName}-tips`}>{tips}</span>}
         {!visibleTips && !loading && showQA && (
           <QA title={typeof showQA === 'boolean' ? '' : showQA.title} />
         )}

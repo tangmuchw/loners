@@ -1,42 +1,44 @@
-.box {
-  position: relative;
-}
+.loners-form-item {
+  &-box {
+    position: relative;
+  }
 
-.mgR {
-  margin-right: 26px;
-}
+  &-mg-r {
+    margin-right: 26px;
+  }
 
-.qa {
-  position: absolute;
-  top: 50%;
-  right: -20px;
-  transform: translateY(-50%);
-}
+  .qa {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+  }
 
-.textareaQA {
-  top: 0;
-  transform: translateY(0);
-}
+  &-textarea-qa {
+    top: 0;
+    transform: translateY(0);
+  }
 
-.inputLoading {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  min-width: 40px;
-  transform: translate(105%, -50%);
+  &-input-loading {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    min-width: 40px;
+    transform: translate(105%, -50%);
 
-  :global {
-    .ant-spin-dot-spin {
-      font-size: 14px;
+    :global {
+      .ant-spin-dot-spin {
+        font-size: 14px;
+      }
     }
   }
-}
 
-.loadingTxt {
-  margin-left: 4px;
-  color: #a9a9a9;
-}
+  &-loading-txt {
+    margin-left: 4px;
+    color: #a9a9a9;
+  }
 
-.tips {
-  color: #e76f51;
+  &-tips {
+    color: #e76f51;
+  }
 }

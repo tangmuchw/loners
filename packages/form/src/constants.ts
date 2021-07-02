@@ -12,3 +12,5 @@ export const WIDTH_SIZE_ENUM = {
   // 适用于长文本录入，如长链接、描述、备注等，通常搭配自适应多行输入框或定高文本域使用。
   xl: 552,
 };
+
+export const FORM_ITEM_CLASS_NAME = 'loners-form-item';
