@@ -72,8 +72,6 @@ export interface FormToolProps extends RowProps {
 
   className?: string;
 
-  extraShowParams?: ExtraShowParams;
-
   action?: FormToolAction;
 
   children?: ReactNode;
