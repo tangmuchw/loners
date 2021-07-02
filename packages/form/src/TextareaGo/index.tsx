@@ -20,8 +20,8 @@ const TextareaGo: React.FC<TextAreaGoProps> = (props) => {
     fixedWidth = false,
     style,
     placeholder = '请输入',
-    showCount,
-    maxLength,
+    showCount = true,
+    maxLength = 300,
     allowClear = true,
     autoSize = {
       minRows: 3,
