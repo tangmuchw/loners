@@ -1,6 +1,6 @@
 {
   "name": "loners-scripts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "为工作而生，常用的一些工具方法",
   "main": "index.js",
   "scripts": {
