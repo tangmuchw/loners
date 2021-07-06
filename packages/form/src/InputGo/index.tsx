@@ -26,7 +26,7 @@ const InputGo: React.FC<InputGoProps> = (props) => {
         [`${formItemClassName}-mg-r`]: showQA && fixedWidth,
       })}
     >
-      <Input placeholder={placeholder} style={ownStyle} {...rawProps} />;
+      <Input placeholder={placeholder} style={ownStyle} {...rawProps} />
       {showQA && (
         <QA
           className={`${formItemClassName}-qa`}
