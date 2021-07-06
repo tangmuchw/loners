@@ -7,6 +7,7 @@ import { throttle } from 'lodash';
 import FormWidget from '../FormWidget';
 import FormTool from '../FormTool';
 import { FORM_WIDGET_LAYOUT, FORM_ITEM_LAYOUT, SUBMIT_FORM_CLASS_NAME } from './constants';
+import type { FormInstance } from 'antd';
 import type { SubmitFormProps, FormGroup } from './interface';
 import './index.less';
 
@@ -56,9 +57,9 @@ function SubmitForm({
 
             if (show) {
               return (
-                <FormItem noStyle>
-                  {() => {
-                    const visible = typeof show(form, action);
+                <FormItem noStyle shouldUpdate={grp?.shouldUpdate}>
+                  {(fm: FormInstance) => {
+                    const visible = show(fm, action);
 
                     if (!visible) return null;
 
