@@ -7,8 +7,10 @@ import { throttle } from 'lodash';
 import FormWidget from '../FormWidget';
 import FormTool from '../FormTool';
 import { FORM_WIDGET_LAYOUT, FORM_ITEM_LAYOUT, SUBMIT_FORM_CLASS_NAME } from './constants';
-import type { SubmitFormProps } from './interface';
+import type { SubmitFormProps, FormGroup } from './interface';
 import './index.less';
+
+const { Item: FormItem } = Form;
 
 function SubmitForm({
   className,
@@ -49,14 +51,32 @@ function SubmitForm({
         {...rawProps}
       >
         {groups &&
-          groups.map((grp: any) => {
+          groups.map((grp: FormGroup, idx) => {
             const { title, items, show } = grp;
-            const visible = show?.(form, action) ?? true;
 
-            if (!visible) return null;
+            if (show) {
+              return (
+                <FormItem noStyle>
+                  {() => {
+                    const visible = typeof show(form, action);
+
+                    if (!visible) return null;
+
+                    return (
+                      // eslint-disable-next-line react/no-array-index-key
+                      <div key={idx}>
+                        <div className={`${submitFormClassName}-title`}>{title}</div>
+                        <FormTool action={action} items={items} />
+                      </div>
+                    );
+                  }}
+                </FormItem>
+              );
+            }
 
             return (
-              <div key={title}>
+              // eslint-disable-next-line react/no-array-index-key
+              <div key={idx}>
                 <div className={`${submitFormClassName}-title`}>{title}</div>
                 <FormTool action={action} items={items} />
               </div>
