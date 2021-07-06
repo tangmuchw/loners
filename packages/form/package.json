@@ -1,6 +1,6 @@
 {
   "name": "loners-form",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "为工作而生，基于 antd 而生的可配置化表单",
   "keywords": ["antd", "form", "configured"],
   "main": "lib/index.js",
