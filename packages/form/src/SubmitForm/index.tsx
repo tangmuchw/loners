@@ -57,15 +57,15 @@ function SubmitForm({
 
             if (show) {
               return (
-                <FormItem noStyle shouldUpdate={grp?.shouldUpdate}>
+                // eslint-disable-next-line react/no-array-index-key
+                <FormItem noStyle shouldUpdate={grp?.shouldUpdate} key={idx}>
                   {(fm: FormInstance) => {
                     const visible = show(fm, action);
 
                     if (!visible) return null;
 
                     return (
-                      // eslint-disable-next-line react/no-array-index-key
-                      <div key={idx}>
+                      <div>
                         <div className={`${submitFormClassName}-title`}>{title}</div>
                         <FormTool action={action} items={items} />
                       </div>
