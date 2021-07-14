@@ -31,7 +31,7 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
                 const visible = typeof show === 'function' ? show(fm, action) : show;
                 if (!visible) return null;
 
-                const itemFieldProps = {
+                const itemFieldProps: any = {
                   disabled: disabled?.(action) ?? isReadOnly,
                   ...fieldProps,
                 };

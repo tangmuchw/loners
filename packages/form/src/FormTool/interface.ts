@@ -61,7 +61,7 @@ export interface FormToolItem extends FormItemProps<any> {
   renderFormItem?: (
     fm: FormInstance,
     action?: FormToolAction,
-    fieldProps?: FieldProps,
+    fieldProps?: { disabled: boolean; [key: string]: any },
   ) => ReactNode;
 
   /** 仅 type = Customize 生效 */
