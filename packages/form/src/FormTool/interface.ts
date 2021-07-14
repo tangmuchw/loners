@@ -58,10 +58,17 @@ export interface FormToolItem extends FormItemProps<any> {
   colProps?: ColProps;
 
   /** 仅 type = Customize 生效 */
-  renderFormItem?: (fm: FormInstance, action?: FormToolAction) => ReactNode;
+  renderFormItem?: (
+    fm: FormInstance,
+    action?: FormToolAction,
+    fieldProps?: FieldProps,
+  ) => ReactNode;
 
   /** 仅 type = Customize 生效 */
   render?: (fm: FormInstance, action?: FormToolAction) => ReactNode;
+
+  /** 仅 action = readonly 生效 */
+  renderText?: (fm: FormInstance, action?: FormToolAction) => ReactNode;
 
   /** 单独配置将 urlParams 同步到 query request */
   syncToQuery?: boolean | SyncToQueryFunc;

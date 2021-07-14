@@ -14,6 +14,8 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
       {items?.map((child: FormToolItem) => {
         const {
           type: componentType,
+          name,
+          show = true,
           fieldProps,
           colProps,
           disabled,
@@ -22,8 +24,6 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
           ...formItemProps
         } = omit(child, ['syncToQuery']);
 
-        const { name, show = true } = formItemProps || {};
-
         return (
           <Col key={`${name}_${componentType}`} {...colProps}>
             <Form.Item noStyle shouldUpdate>
@@ -31,17 +31,19 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
                 const visible = typeof show === 'function' ? show(fm, action) : show;
                 if (!visible) return null;
 
-                if (componentType === 'Customize')
-                  return render ? (
-                    render?.(fm, action)
-                  ) : (
-                    <Form.Item {...formItemProps}>{renderFormItem?.(fm, action)}</Form.Item>
-                  );
-
                 const itemFieldProps = {
                   disabled: disabled?.(action) ?? isReadOnly,
                   ...fieldProps,
                 };
+
+                if (componentType === 'Customize')
+                  return render ? (
+                    render?.(fm, action)
+                  ) : (
+                    <Form.Item {...formItemProps}>
+                      {renderFormItem?.(fm, action, itemFieldProps)}
+                    </Form.Item>
+                  );
 
                 return (
                   <FormItem type={componentType} fieldProps={itemFieldProps} {...formItemProps} />
