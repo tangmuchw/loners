@@ -6,7 +6,6 @@ import cx from 'classnames';
 import { throttle } from 'lodash';
 import FormWidget from '../FormWidget';
 import FormTool from '../FormTool';
-import TextTool from '../TextTool';
 import { FORM_WIDGET_LAYOUT, FORM_ITEM_LAYOUT, SUBMIT_FORM_CLASS_NAME } from './constants';
 import type { FormInstance } from 'antd';
 import type { SubmitFormProps, FormGroup } from './interface';
