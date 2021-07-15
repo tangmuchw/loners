@@ -14,7 +14,6 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
       {items?.map((child: FormToolItem) => {
         const {
           type: componentType,
-          name,
           show = true,
           fieldProps,
           colProps,
@@ -24,6 +23,8 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
           renderText,
           ...formItemProps
         } = omit(child, ['syncToQuery']);
+
+        const { name } = formItemProps || {};
 
         return (
           <Col key={`${name}_${componentType}`} {...colProps}>
