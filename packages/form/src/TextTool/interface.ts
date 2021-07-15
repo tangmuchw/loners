@@ -10,6 +10,8 @@ export interface TextToolItem extends FormToolItem {
 }
 
 export interface TextToolProps extends DescriptionsProps {
+  fm: FormInstance;
+
   items?: TextToolItem[];
 
   className?: string;

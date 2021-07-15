@@ -70,7 +70,7 @@ function SubmitForm({
                       <div>
                         <div className={`${submitFormClassName}-title`}>{title}</div>
                         {isReadonly ? (
-                          <TextTool items={items} />
+                          <TextTool items={items} fm={fm} />
                         ) : (
                           <FormTool action={action} items={items} />
                         )}
