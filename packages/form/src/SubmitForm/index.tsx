@@ -6,6 +6,7 @@ import cx from 'classnames';
 import { throttle } from 'lodash';
 import FormWidget from '../FormWidget';
 import FormTool from '../FormTool';
+import TextTool from '../TextTool';
 import { FORM_WIDGET_LAYOUT, FORM_ITEM_LAYOUT, SUBMIT_FORM_CLASS_NAME } from './constants';
 import type { FormInstance } from 'antd';
 import type { SubmitFormProps, FormGroup } from './interface';
@@ -41,6 +42,7 @@ function SubmitForm({
   );
 
   const submitFormClassName = SUBMIT_FORM_CLASS_NAME;
+  const isReadonly = action && action === 'readonly';
 
   return (
     <Card className={cx(submitFormClassName, className)}>
@@ -67,7 +69,11 @@ function SubmitForm({
                     return (
                       <div>
                         <div className={`${submitFormClassName}-title`}>{title}</div>
-                        <FormTool action={action} items={items} />
+                        {isReadonly ? (
+                          <TextTool items={items} />
+                        ) : (
+                          <FormTool action={action} items={items} />
+                        )}
                       </div>
                     );
                   }}
@@ -89,9 +95,11 @@ function SubmitForm({
               <Button htmlType="button" onClick={onCancel}>
                 返回
               </Button>
-              <Button disabled={action === 'readonly'} type="primary" htmlType="submit">
-                提交
-              </Button>
+              {!isReadonly && (
+                <Button type="primary" htmlType="submit">
+                  提交
+                </Button>
+              )}
             </Space>
           </Form.Item>
         )}
