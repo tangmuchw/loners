@@ -1,5 +1,5 @@
 /** 提交表单-编辑/新增/只读 */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Card, Button, Space } from 'antd';
 import { useHistory } from 'umi';
 import cx from 'classnames';
@@ -26,7 +26,10 @@ function SubmitForm({
 
   const [form] = Form.useForm();
 
-  // 初始化给一个默认的 form
+  useEffect(() => {
+    if (initialValues) form.setFieldsValue(initialValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialValues]);
 
   const onCancel = () => {
     hsy.goBack();
@@ -45,13 +48,7 @@ function SubmitForm({
 
   return (
     <Card className={cx(submitFormClassName, className)}>
-      <FormWidget
-        form={form}
-        initialValues={initialValues}
-        onFinish={handleFinish}
-        {...FORM_WIDGET_LAYOUT}
-        {...rawProps}
-      >
+      <FormWidget form={form} onFinish={handleFinish} {...FORM_WIDGET_LAYOUT} {...rawProps}>
         {groups &&
           groups.map((grp: FormGroup, idx) => {
             const { title, items, show } = grp;
