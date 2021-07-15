@@ -13,9 +13,9 @@ function TextTool({ fm, items, className, children, ...rowProps }: TextToolProps
         const { name, renderText, ...textItemProps } = item;
         const text = name ? record?.name : undefined;
 
-        if (renderText) return renderText(text, record, fm);
-
-        return <DescItem {...textItemProps}>{text}</DescItem>;
+        return (
+          <DescItem {...textItemProps}>{renderText ? renderText(text, record, fm) : text}</DescItem>
+        );
       })}
     </Descriptions>
   );
