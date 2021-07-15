@@ -8,10 +8,10 @@ function TextTool({ fm, items, className, children, ...rowProps }: TextToolProps
   const record = fm?.getFieldsValue(true) || {};
 
   return (
-    <Descriptions column={{ xs: 8, sm: 16, md: 24 }} className={className} {...rowProps}>
+    <Descriptions className={className} {...rowProps}>
       {items?.map((item: TextToolItem) => {
         const { name, renderText, ...textItemProps } = item;
-        const text = name ? record?.name : undefined;
+        const text = name ? record[`${name}`] : undefined;
 
         return (
           <DescItem {...textItemProps}>{renderText ? renderText(text, record, fm) : text}</DescItem>
