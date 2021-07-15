@@ -21,6 +21,7 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
           disabled,
           renderFormItem,
           render,
+          renderText,
           ...formItemProps
         } = omit(child, ['syncToQuery']);
 
@@ -35,6 +36,11 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
                   disabled: disabled?.(action) ?? isReadOnly,
                   ...fieldProps,
                 };
+
+                const record = fm.getFieldsValue(true) || {};
+                const text = record[`${name}`];
+
+                if (isReadOnly && renderText) return renderText(text, record, fm);
 
                 if (componentType === 'Customize')
                   return render ? (

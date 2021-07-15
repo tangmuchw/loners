@@ -57,12 +57,6 @@ function SubmitForm({
           groups.map((grp: FormGroup, idx) => {
             const { title, items, show } = grp;
 
-            const tool = isReadonly ? (
-              <TextTool items={items} fm={form} />
-            ) : (
-              <FormTool action={action} items={items} />
-            );
-
             if (show) {
               return (
                 // eslint-disable-next-line react/no-array-index-key
@@ -75,7 +69,7 @@ function SubmitForm({
                     return (
                       <div>
                         <div className={`${submitFormClassName}-title`}>{title}</div>
-                        {tool}
+                        <FormTool action={action} items={items} />
                       </div>
                     );
                   }}
@@ -87,7 +81,7 @@ function SubmitForm({
               // eslint-disable-next-line react/no-array-index-key
               <div key={idx}>
                 <div className={`${submitFormClassName}-title`}>{title}</div>
-                {tool}
+                <FormTool action={action} items={items} />
               </div>
             );
           })}
