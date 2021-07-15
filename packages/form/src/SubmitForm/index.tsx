@@ -1,5 +1,5 @@
 /** 提交表单-编辑/新增/只读 */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Form, Card, Button, Space } from 'antd';
 import { useHistory } from 'umi';
 import cx from 'classnames';
@@ -17,7 +17,6 @@ function SubmitForm({
   className,
   action,
   groups,
-  initialValues,
   footerRender,
   onFinish,
   ...rawProps
@@ -25,11 +24,6 @@ function SubmitForm({
   const hsy = useHistory();
 
   const [form] = Form.useForm();
-
-  useEffect(() => {
-    if (initialValues) form.setFieldsValue(initialValues);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialValues]);
 
   const onCancel = () => {
     hsy.goBack();
@@ -52,11 +46,12 @@ function SubmitForm({
         {groups &&
           groups.map((grp: FormGroup, idx) => {
             const { title, items, show } = grp;
+            const key = `${title}_${idx}`;
 
             if (show) {
               return (
                 // eslint-disable-next-line react/no-array-index-key
-                <FormItem noStyle shouldUpdate={grp?.shouldUpdate} key={idx}>
+                <FormItem noStyle shouldUpdate={grp?.shouldUpdate} key={key}>
                   {(fm: FormInstance) => {
                     const visible = show(fm, action);
 
@@ -75,7 +70,7 @@ function SubmitForm({
 
             return (
               // eslint-disable-next-line react/no-array-index-key
-              <div key={idx}>
+              <div key={key}>
                 <div className={`${submitFormClassName}-title`}>{title}</div>
                 <FormTool action={action} items={items} />
               </div>
