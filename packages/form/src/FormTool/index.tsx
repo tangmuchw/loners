@@ -32,11 +32,6 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
                 const visible = typeof show === 'function' ? show(fm, action) : show;
                 if (!visible) return null;
 
-                const itemFieldProps: any = {
-                  disabled: disabled?.(action) ?? isReadOnly,
-                  ...fieldProps,
-                };
-
                 const record = fm.getFieldsValue(true) || {};
                 const text = record[`${name}`];
 
@@ -46,10 +41,13 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
                   return render ? (
                     render?.(fm, action)
                   ) : (
-                    <Form.Item {...formItemProps}>
-                      {renderFormItem?.(fm, action, itemFieldProps)}
-                    </Form.Item>
+                    <Form.Item {...formItemProps}>{renderFormItem?.(fm, action)}</Form.Item>
                   );
+
+                const itemFieldProps = {
+                  disabled: disabled?.(action) ?? isReadOnly,
+                  ...fieldProps,
+                };
 
                 return (
                   <FormItem type={componentType} fieldProps={itemFieldProps} {...formItemProps} />
