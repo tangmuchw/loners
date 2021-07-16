@@ -14,6 +14,7 @@ const RangePickerGo: React.FC<RangePickerGoProps> = (props) => {
   return (
     <RangePicker
       style={style}
+      placeholder={['开始时间', '结束时间']}
       ranges={{
         今天: [moment().startOf('day'), moment().endOf('day')],
         当月: [moment().startOf('month'), moment().endOf('month')],
