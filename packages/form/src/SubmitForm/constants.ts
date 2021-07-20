@@ -7,9 +7,7 @@ export const FORM_ITEM_LAYOUT = {
 
 export const FORM_WIDGET_LAYOUT = {
   labelCol: {
-    xs: { span: 12 },
-    sm: { span: 6 },
-    lg: { span: 'auto' },
+    span: 'auto',
   },
   wrapperCol: {
     xs: { span: 24 },
