@@ -53,6 +53,8 @@ export type FieldProps = { showQA?: ShowQA } & (
   | RangePickerTool
 );
 
+type RenderFormItemProps = FormItemProps<any>;
+
 export interface FormToolItem extends FormItemProps<any> {
   type?: FormItemType;
 
@@ -72,7 +74,11 @@ export interface FormToolItem extends FormItemProps<any> {
   ) => ReactNode;
 
   /** 仅 type = Customize 生效 */
-  render?: (fm: FormInstance, action?: FormToolAction) => ReactNode;
+  render?: (
+    fm: FormInstance,
+    action?: FormToolAction,
+    formItemProps?: RenderFormItemProps,
+  ) => ReactNode;
 
   renderText?: (text: any, record: any, fm: FormInstance) => ReactNode;
 

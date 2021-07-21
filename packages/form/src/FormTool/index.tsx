@@ -40,7 +40,7 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
 
                 if (componentType === 'Customize')
                   return render ? (
-                    render?.(fm, action)
+                    render?.(fm, action, formItemProps)
                   ) : (
                     <Form.Item {...formItemProps}>{renderFormItem?.(fm, action)}</Form.Item>
                   );
