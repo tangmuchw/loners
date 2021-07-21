@@ -1,14 +1,18 @@
 import React from 'react';
 import { Form, Radio, Switch } from 'antd';
+import cx from 'classnames';
+import QA from '../QA';
 import RangePickerGo from '../RangePickerGo';
 import InputGo from '../InputGo';
 import TextareaGo from '../TextareaGo';
 import InputNumberGo from '../InputNumberGo';
 import InputLoadingGo from '../InputLoadingGo';
 import SelectGo from '../SelectGo';
+import { FORM_ITEM_CLASS_NAME } from '../constants';
 import type { ReactNode } from 'react';
-import type { FormItemType } from './interface';
+import type { FormItemType, FieldProps } from './interface';
 import type { FormItemProps } from 'antd/lib/form/FormItem';
+import '../index.less';
 
 const FORM_ITEM_MAP = new Map<string, ReactNode>([
   ['InputText', InputGo],
@@ -23,7 +27,7 @@ const FORM_ITEM_MAP = new Map<string, ReactNode>([
 
 interface FormToolItemProps extends FormItemProps {
   type: FormItemType;
-  fieldProps: any;
+  fieldProps: FieldProps;
 }
 
 function FormItem({ type, fieldProps, ...rawProps }: FormToolItemProps) {
@@ -34,9 +38,24 @@ function FormItem({ type, fieldProps, ...rawProps }: FormToolItemProps) {
 
   if (!Component) return <></>;
 
+  const formItemClassName = FORM_ITEM_CLASS_NAME;
+  const { showQA, ...rawFieldProps } = fieldProps || {};
+
   return (
     <Form.Item {...rawProps}>
-      <Component {...fieldProps} />
+      {showQA ? (
+        <div className={cx(`${formItemClassName}-box`, { [`${formItemClassName}-mg-r`]: showQA })}>
+          <Component {...rawFieldProps} />
+          <QA
+            className={cx(`${formItemClassName}-qa`, {
+              [`${formItemClassName}-textarea-qa`]: type === 'Textarea',
+            })}
+            title={typeof showQA === 'boolean' ? '' : showQA.title}
+          />
+        </div>
+      ) : (
+        <Component {...rawFieldProps} />
+      )}
     </Form.Item>
   );
 }

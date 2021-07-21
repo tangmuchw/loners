@@ -3,6 +3,7 @@ import type { ColProps } from 'antd/lib/grid/col';
 import type { FormInstance } from 'antd/lib/form';
 import type { RowProps } from 'antd/lib/row';
 import type { SwitchProps } from 'antd/lib/switch';
+
 import type { FormItemProps } from 'antd/lib/form/FormItem';
 import type { RadioGroupProps } from 'antd/lib/radio/interface';
 import type { CommonSelectGoProps } from '../SelectGo';
@@ -11,6 +12,7 @@ import type { InputGoProps } from '../InputGo';
 import type { TextAreaGoProps } from '../TextareaGo';
 import type { InputNumberGoProps } from '../InputNumberGo';
 import type { InputLoadingGoProps } from '../InputLoadingGo';
+import type { ShowQA } from '../interface';
 
 export type FormToolAction = 'edit' | 'add' | 'readonly';
 
@@ -44,7 +46,12 @@ export type ExtraTool = RadioGroupProps & SwitchProps;
 
 export type RadioTool = RadioGroupProps;
 
-export type FieldProps = InputTool | SelectTool | ExtraTool | RangePickerTool;
+export type FieldProps = { showQA?: ShowQA } & (
+  | InputTool
+  | SelectTool
+  | ExtraTool
+  | RangePickerTool
+);
 
 export interface FormToolItem extends FormItemProps<any> {
   type?: FormItemType;
