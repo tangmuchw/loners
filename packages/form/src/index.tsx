@@ -8,3 +8,4 @@ export { default as FormWidget } from './FormWidget';
 export { default as FormTool } from './FormTool';
 export { default as FormToolItem } from './FormTool/FormItem';
 export { default as QA } from './QA';
+export { default as SwitchGo } from './SwitchGo';
