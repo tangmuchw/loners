@@ -1,6 +1,6 @@
 {
   "name": "loners-form",
-  "version": "1.0.42",
+  "version": "1.0.43",
   "description": "为工作而生，基于 antd 而生的可配置化表单",
   "keywords": [
     "antd",
