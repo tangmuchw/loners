@@ -27,7 +27,7 @@ const FORM_ITEM_MAP = new Map<string, ReactNode>([
 
 interface FormToolItemProps extends FormItemProps {
   type: FormItemType;
-  fieldProps: FieldProps;
+  fieldProps?: FieldProps;
 }
 
 function FormItem({ type, fieldProps, ...rawProps }: FormToolItemProps) {
