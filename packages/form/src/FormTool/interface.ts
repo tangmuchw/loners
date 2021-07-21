@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import type { ColProps } from 'antd/lib/grid/col';
 import type { FormInstance } from 'antd/lib/form';
 import type { RowProps } from 'antd/lib/row';
-import type { SwitchProps } from 'antd/lib/switch';
 
 import type { FormItemProps } from 'antd/lib/form/FormItem';
 import type { RadioGroupProps } from 'antd/lib/radio/interface';
@@ -12,6 +11,7 @@ import type { InputGoProps } from '../InputGo';
 import type { TextAreaGoProps } from '../TextareaGo';
 import type { InputNumberGoProps } from '../InputNumberGo';
 import type { InputLoadingGoProps } from '../InputLoadingGo';
+import type { SwitchGoProps } from '../SwitchGo';
 import type { ShowQA } from '../interface';
 
 export type FormToolAction = 'edit' | 'add' | 'readonly';
@@ -42,7 +42,7 @@ export type InputTool = InputGoProps & InputNumberGoProps & InputLoadingGoProps 
 
 export type RangePickerTool = RangePickerGoProps;
 
-export type ExtraTool = RadioGroupProps & SwitchProps;
+export type ExtraTool = RadioGroupProps & SwitchGoProps;
 
 export type RadioTool = RadioGroupProps;
 

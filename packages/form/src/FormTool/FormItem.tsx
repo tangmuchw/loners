@@ -1,18 +1,15 @@
 import React from 'react';
-import { Form, Radio, Switch } from 'antd';
-import cx from 'classnames';
-import QA from '../QA';
+import { Form, Radio } from 'antd';
 import RangePickerGo from '../RangePickerGo';
 import InputGo from '../InputGo';
 import TextareaGo from '../TextareaGo';
 import InputNumberGo from '../InputNumberGo';
 import InputLoadingGo from '../InputLoadingGo';
 import SelectGo from '../SelectGo';
-import { FORM_ITEM_CLASS_NAME } from '../constants';
+import SwitchGo from '../SwitchGo';
 import type { ReactNode } from 'react';
-import type { FormItemType, FieldProps } from './interface';
+import type { FormItemType } from './interface';
 import type { FormItemProps } from 'antd/lib/form/FormItem';
-import '../index.less';
 
 const FORM_ITEM_MAP = new Map<string, ReactNode>([
   ['InputText', InputGo],
@@ -20,14 +17,14 @@ const FORM_ITEM_MAP = new Map<string, ReactNode>([
   ['InputNumber', InputNumberGo],
   ['InputLoading', InputLoadingGo],
   ['SimpleSelect', SelectGo],
-  ['Switch', Switch],
+  ['Switch', SwitchGo],
   ['RadioGroup', Radio.Group],
   ['RangePicker', RangePickerGo],
 ]);
 
 interface FormToolItemProps extends FormItemProps {
   type: FormItemType;
-  fieldProps?: FieldProps;
+  fieldProps: any;
 }
 
 function FormItem({ type, fieldProps, ...rawProps }: FormToolItemProps) {
@@ -38,26 +35,9 @@ function FormItem({ type, fieldProps, ...rawProps }: FormToolItemProps) {
 
   if (!Component) return <></>;
 
-  const formItemClassName = FORM_ITEM_CLASS_NAME;
-  const { showQA, ...rawFieldProps } = fieldProps || {};
-
   return (
-    <Form.Item
-      className={cx({
-        [`${formItemClassName}-box`]: showQA,
-        [`${formItemClassName}-mg-r`]: showQA,
-      })}
-      {...rawProps}
-    >
-      <Component {...rawFieldProps} />
-      {showQA && (
-        <QA
-          className={cx(`${formItemClassName}-qa`, {
-            [`${formItemClassName}-textarea-qa`]: type === 'Textarea',
-          })}
-          title={typeof showQA === 'boolean' ? '' : showQA?.title}
-        />
-      )}
+    <Form.Item {...rawProps}>
+      <Component {...fieldProps} />
     </Form.Item>
   );
 }
