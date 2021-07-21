@@ -1,8 +1,12 @@
 import React from 'react';
 import { Select, Tooltip } from 'antd';
+import cx from 'classnames';
+import QA from '../QA';
 import Multi from './Multi';
 import { WIDTH_SIZE_ENUM } from '../constants';
 import { fromValueEnum } from './utils';
+import type { ShowQA } from '../interface';
+import { FORM_ITEM_CLASS_NAME } from '../constants';
 import type { SelectValue, SelectProps } from 'antd/lib/select';
 import type { AbstractTooltipProps } from 'antd/lib/tooltip';
 import '../index.less';
@@ -13,6 +17,9 @@ type ValueEnum = Record<string, string | number> | Map<string | number, string |
 
 export interface SelectGoProps extends Omit<SelectProps<SelectValue>, 'children'> {
   valueEnum?: ValueEnum;
+
+  /** 是否显示 QA, 默认 false */
+  showQA?: ShowQA;
 
   /** 是否开启文字提示, 默认 false */
   tooltip?: boolean | AbstractTooltipProps;
@@ -28,6 +35,7 @@ export interface CommonSelectGoProps extends SelectGoProps {
 const SelectGo: React.FC<SelectGoProps> = (props) => {
   const {
     mode,
+    showQA,
     fixedWidth = false,
     tooltip = false,
     style,
@@ -69,7 +77,23 @@ const SelectGo: React.FC<SelectGoProps> = (props) => {
     <Select mode={mode} options={opts} {...ownProps} />
   );
 
-  return mode === 'multiple' ? <Multi options={opts} tooltip={tooltip} {...ownProps} /> : competent;
+  const formItemClassName = FORM_ITEM_CLASS_NAME;
+
+  return (
+    <div
+      className={cx(`${formItemClassName}-box`, {
+        [`${formItemClassName}-mg-r`]: showQA && fixedWidth,
+      })}
+    >
+      {mode === 'multiple' ? <Multi options={opts} tooltip={tooltip} {...ownProps} /> : competent}
+      {showQA && (
+        <QA
+          className={`${formItemClassName}-qa`}
+          title={typeof showQA === 'boolean' ? '' : showQA.title}
+        />
+      )}
+    </div>
+  );
 };
 
 export default SelectGo;
