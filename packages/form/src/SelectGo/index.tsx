@@ -45,7 +45,7 @@ const SelectGo: React.FC<SelectGoProps> = (props) => {
     placeholder = '请选择',
     ...rawProps
   } = props;
-  const ownStyle = fixedWidth ? { minWidth: WIDTH_SIZE_ENUM.s } : style;
+  const ownStyle = fixedWidth ? { maxWidth: WIDTH_SIZE_ENUM.s } : style;
 
   const opts: SelectGoProps['options'] = valueEnum ? fromValueEnum(valueEnum) : options;
 

@@ -16,7 +16,7 @@ export interface InputGoProps extends InputProps {
 
 const InputGo: React.FC<InputGoProps> = (props) => {
   const { fixedWidth = false, style, placeholder = '请输入', showQA, ...rawProps } = props;
-  const ownStyle = fixedWidth ? { width: WIDTH_SIZE_ENUM.s } : style;
+  const ownStyle = fixedWidth ? { maxWidth: WIDTH_SIZE_ENUM.s } : style;
 
   const formItemClassName = FORM_ITEM_CLASS_NAME;
 
