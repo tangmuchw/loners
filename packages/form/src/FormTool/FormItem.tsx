@@ -41,21 +41,26 @@ function FormItem({ type, fieldProps, ...rawProps }: FormToolItemProps) {
   const formItemClassName = FORM_ITEM_CLASS_NAME;
   const { showQA, ...rawFieldProps } = fieldProps || {};
 
-  const content = showQA ? (
-    <div className={cx(`${formItemClassName}-box`, { [`${formItemClassName}-mg-r`]: showQA })}>
-      <Component {...rawFieldProps} />
-      <QA
-        className={cx(`${formItemClassName}-qa`, {
-          [`${formItemClassName}-textarea-qa`]: type === 'Textarea',
+  return (
+    <Form.Item {...rawProps}>
+      <div
+        className={cx({
+          [`${formItemClassName}-box`]: showQA,
+          [`${formItemClassName}-mg-r`]: showQA,
         })}
-        title={typeof showQA === 'boolean' ? '' : showQA?.title}
-      />
-    </div>
-  ) : (
-    <Component {...rawFieldProps} />
+      >
+        <Component {...rawFieldProps} />
+        {showQA && (
+          <QA
+            className={cx(`${formItemClassName}-qa`, {
+              [`${formItemClassName}-textarea-qa`]: type === 'Textarea',
+            })}
+            title={typeof showQA === 'boolean' ? '' : showQA?.title}
+          />
+        )}
+      </div>
+    </Form.Item>
   );
-
-  return <Form.Item {...rawProps}>{content}</Form.Item>;
 }
 
 export default FormItem;
