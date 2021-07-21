@@ -6,4 +6,5 @@ export { default as RangePickerGo } from './RangePickerGo';
 export { default as SubmitForm } from './SubmitForm';
 export { default as FormWidget } from './FormWidget';
 export { default as FormTool } from './FormTool';
+export { default as FormToolItem } from './FormTool/FormItem';
 export { default as QA } from './QA';
