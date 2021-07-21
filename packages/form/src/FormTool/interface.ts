@@ -53,7 +53,7 @@ export type FieldProps = { showQA?: ShowQA } & (
   | RangePickerTool
 );
 
-type RenderFormItemProps = FormItemProps<any>;
+export type RenderFormItemProps = FormItemProps<any>;
 
 export interface FormToolItem extends FormItemProps<any> {
   type?: FormItemType;
