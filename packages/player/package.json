@@ -1,0 +1,37 @@
+{
+  "name": "loners-player",
+  "version": "1.0.0",
+  "description": "为工作而生的播放器",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangmuchw/loners.git"
+  },
+  "keywords": [
+    "video"
+  ],
+  "author": "tangmuchw <tangmuchw@163.com> (https://github.com/tangmuchw)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tangmuchw/loners/issues"
+  },
+  "homepage": "https://github.com/tangmuchw/loners#readme",
+  "dependencies": {
+    "@types/videojs": "^5.16.2",
+    "classnames": "^2.3.1",
+    "moment": "^2.29.1",
+    "videojs": "^1.0.0",
+    "videojs-hotkeys": "^0.2.27",
+    "videojs-rotate-player-plugin": "^1.0.1"
+  },
+  "peerDependencies": {
+    "antd": "4.x",
+    "react": "^16.x"
+  },
+  "devDependencies": {
+    "@types/video.js": "^7.3.26"
+  }
+}

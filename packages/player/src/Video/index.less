@@ -1,0 +1,193 @@
+@error-color: #00be06;
+
+.loners-player-video {
+  width: 100%;
+
+  :global {
+    .video-js {
+      width: 100%;
+      overflow: visible !important;
+
+      &:not(.vjs-fullscreen) {
+        & .vjs-control-bar {
+          transform: translateY(100%);
+          opacity: 1 !important;
+        }
+      }
+
+      & .vjs-control-bar {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        height: 4em;
+        padding-top: 1em;
+      }
+
+      & .vjs-big-play-button {
+        top: 50%;
+        left: 50%;
+        width: 2em;
+        font-size: 2em;
+        border-color: transparent !important;
+        transform: translate(-50%, -50%);
+      }
+
+      & .vjs-volume-panel .vjs-volume-control.vjs-volume-vertical {
+        z-index: 999;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      & .vjs-progress-control {
+        & .vjs-progress-holder {
+          height: 4px;
+          margin: 0;
+          transform: translateY(-100%);
+
+          &:hover {
+            height: 12px;
+            transform: translateY(-100%);
+
+            .vjs-play-progress::before {
+              display: block;
+              width: 18px;
+              height: 18px;
+              background: rgb(15, 136, 235);
+              border: 2px solid #fff;
+              border-radius: 50%;
+              transition: all ease;
+              content: '';
+            }
+          }
+        }
+      }
+
+      & .vjs-progress-holder .vjs-play-progress {
+        background-color: rgb(15, 136, 235);
+      }
+
+      & .vjs-play-progress {
+        &::before {
+          display: none;
+        }
+      }
+
+      & .vjs-time-control {
+        display: block;
+      }
+
+      & .vjs-progress-control {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 3px;
+      }
+
+      & .vjs-playback-rate {
+        display: block;
+      }
+
+      .vjs-slider-vertical .vjs-volume-level {
+        background-color: #3d8cd2;
+
+        &::before {
+          left: -0.5em;
+        }
+      }
+
+      .vjs-playback-rate .vjs-menu {
+        transform: translateX(-20%);
+      }
+
+      .vjs-playback-rate-value {
+        font-size: 12px;
+        line-height: 30px;
+      }
+
+      .vjs-menu-button-popup .vjs-menu {
+        z-index: 999;
+        width: 8em;
+
+        & .vjs-menu-content {
+          min-width: 8em;
+          padding: 6px 0;
+          background-color: rgba(0, 0, 0, 0.8);
+          border-radius: 5px;
+        }
+
+        & li.vjs-selected {
+          color: rgb(15, 136, 235);
+          background-color: transparent;
+        }
+
+        & .vjs-menu-item {
+          height: 3em;
+          color: #ddd;
+          line-height: 3em;
+        }
+      }
+
+      & .vjs-button {
+        cursor: pointer;
+      }
+
+      & button[title='Rotate'] .vjs-icon-placeholder:after {
+        display: inline-block;
+        content: 'R';
+      }
+
+      & .vjs-quality-selector-btn {
+        line-height: 3em;
+      }
+
+      & .vjs-error-display {
+        & .vjs-modal-dialog-content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: @error-color;
+        }
+
+        &:before {
+          display: none;
+        }
+      }
+
+      & .vjs-quality-selector-menu {
+        position: relative;
+
+        & .vjs-button {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        & .vjs-menu {
+          left: -2em;
+        }
+      }
+    }
+  }
+
+  &-not-play {
+    width: 100%;
+    height: 240px;
+    text-align: center;
+    background-color: #000;
+  }
+
+  &-frown-icon {
+    color: @error-color;
+    font-size: 40px;
+  }
+
+  &-not-play-text {
+    margin-top: 10px;
+    color: @error-color;
+  }
+
+  &-padding-space {
+    padding-bottom: 40px;
+  }
+}
