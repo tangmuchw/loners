@@ -1,6 +1,6 @@
 {
   "name": "loners-player",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "为工作而生的播放器",
   "main": "index.js",
   "scripts": {
