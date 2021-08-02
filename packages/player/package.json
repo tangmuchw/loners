@@ -2,7 +2,9 @@
   "name": "loners-player",
   "version": "1.0.2",
   "description": "为工作而生的播放器",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +13,9 @@
     "url": "git+https://github.com/tangmuchw/loners.git"
   },
   "keywords": [
-    "video"
+    "video",
+    "audio",
+    "videojs"
   ],
   "author": "tangmuchw <tangmuchw@163.com> (https://github.com/tangmuchw)",
   "license": "ISC",
