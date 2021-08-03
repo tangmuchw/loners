@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "build": "father-build",
+    "bdPlayer": "PACKAGE=loners-player father-build",
     "tsc": "tsc --noEmit"
   },
   "browserslist": [
