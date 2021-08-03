@@ -1,3 +1,5 @@
+import type { VideoPlayerProps } from './interface';
+
 export const QUALITY_LEVEL_MAP = new Map([
   ['ld', '流畅'],
   ['sd', '标清'],
@@ -9,7 +11,7 @@ export const STATUS_DESCRIPTION = {
   error: '深感抱歉，加载视频失败，请检查网络或刷新网页！',
 };
 
-export const BASIC_PLAYER_OPTION = {
+export const BASIC_PLAYER_OPTION: VideoPlayerProps['options'] = {
   controls: true,
 
   preload: 'none',
@@ -30,7 +32,6 @@ export const BASIC_PLAYER_OPTION = {
   },
 
   sources: [],
-  qualityLevels: [],
 
   aspectRatio: '16:9',
 };

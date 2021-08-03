@@ -32,7 +32,9 @@ function Video({
   showDurationDisplay = true,
   needHotKeys = true,
   needPauseMeSmartly = true,
-  initialize,
+  options,
+  onError,
+  onInitialize,
 }: VideoPlayerProps) {
   const [hasError, setHasError] = useState(false);
 
@@ -55,6 +57,7 @@ function Video({
 
   const handleError = () => {
     setHasError(true);
+    onError?.();
   };
 
   const listenTimeupdate = (videoPlayer: VideoJsPlayer) => {
@@ -75,6 +78,7 @@ function Video({
       sources: videoSources,
       // @ts-ignore
       qualityLevels: showQuality ? getQualityLevels(sources) : [],
+      ...options,
     });
 
     if (showBackRate) {
@@ -98,17 +102,17 @@ function Video({
 
     player?.volume(defaultVolume);
 
-    player?.on('error', () => handleError());
+    player?.on('error', handleError);
     player?.on('timeupdate', () => listenTimeupdate(player));
 
     window.addEventListener('message', subscribeVideoMessage, false);
 
-    initialize?.(player);
+    onInitialize?.(player);
 
     return () => {
       window.removeEventListener('message', subscribeVideoMessage, false);
 
-      player?.off('error', () => handleError());
+      player?.off('error', handleError);
       player?.off('timeupdate', () => listenTimeupdate(player));
       player?.dispose();
     };

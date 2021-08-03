@@ -1,9 +1,11 @@
-import type { VideoJsPlayer } from 'video.js';
+import type { VideoJsPlayer, VideoJsPlayerOptions } from 'video.js';
 import type { PlayerSource } from '../interface';
 
 export interface VideoPlayerProps {
   id: string;
   sources?: PlayerSource | { src: string; type: string }[];
+
+  options?: VideoJsPlayerOptions;
 
   defaultVolume?: number;
 
@@ -31,5 +33,7 @@ export interface VideoPlayerProps {
   showDurationDisplay?: boolean;
 
   /** 已初始化 player 后的自定义一些操作 */
-  initialize?: (player: VideoJsPlayer) => any;
+  onInitialize?: (player: VideoJsPlayer) => any;
+
+  onError?: () => any;
 }
