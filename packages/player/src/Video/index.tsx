@@ -117,7 +117,7 @@ function Video({
       player?.dispose();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [JSON.stringify(sources)]);
 
   const hasSources = Boolean(videoSources?.length);
   const showPadding = hasSources && !hasError;
