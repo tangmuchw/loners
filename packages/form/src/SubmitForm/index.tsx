@@ -59,7 +59,7 @@ function SubmitForm({
 
                     return (
                       <div>
-                        <div className={`${submitFormClassName}-title`}>{title}</div>
+                        {title && <div className={`${submitFormClassName}-title`}>{title}</div>}
                         <FormTool action={action} items={items} />
                       </div>
                     );
@@ -71,7 +71,7 @@ function SubmitForm({
             return (
               // eslint-disable-next-line react/no-array-index-key
               <div key={key}>
-                <div className={`${submitFormClassName}-title`}>{title}</div>
+                {title && <div className={`${submitFormClassName}-title`}>{title}</div>}
                 <FormTool action={action} items={items} />
               </div>
             );
