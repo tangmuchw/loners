@@ -8,6 +8,7 @@
   "scripts": {
     "build": "father-build",
     "bdPlayer": "PACKAGE=loners-player father-build",
+    "bdForm": "PACKAGE=loners-form father-build",
     "tsc": "tsc --noEmit"
   },
   "browserslist": [
