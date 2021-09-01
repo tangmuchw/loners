@@ -27,35 +27,35 @@ function FormTool({ action, items, className, children, ...rowProps }: FormToolP
         const { name } = formItemProps || {};
 
         return (
-          <Col key={`${name}_${componentType}`} {...colProps}>
-            <Form.Item noStyle shouldUpdate>
-              {(fm: FormInstance) => {
-                const visible = typeof show === 'function' ? show(fm, action) : show;
-                if (!visible) return null;
+          <Form.Item key={`${name}_${componentType}`} noStyle shouldUpdate>
+            {(fm: FormInstance) => {
+              const visible = typeof show === 'function' ? show(fm, action) : show;
+              if (!visible) return null;
 
-                const record = fm.getFieldsValue(true) || {};
-                const text = record[`${name}`];
+              const record = fm.getFieldsValue(true) || {};
+              const text = record[`${name}`];
 
-                if (isReadOnly && renderText) return renderText(text, record, fm);
+              if (isReadOnly && renderText) return renderText(text, record, fm);
 
-                if (componentType === 'Customize')
-                  return render ? (
-                    render?.(fm, action, formItemProps)
-                  ) : (
-                    <Form.Item {...formItemProps}>{renderFormItem?.(fm, action)}</Form.Item>
-                  );
-
-                const itemFieldProps = {
-                  disabled: disabled?.(action) ?? isReadOnly,
-                  ...fieldProps,
-                };
-
-                return (
-                  <FormItem type={componentType} fieldProps={itemFieldProps} {...formItemProps} />
+              if (componentType === 'Customize')
+                return render ? (
+                  render?.(fm, action, formItemProps)
+                ) : (
+                  <Form.Item {...formItemProps}>{renderFormItem?.(fm, action)}</Form.Item>
                 );
-              }}
-            </Form.Item>
-          </Col>
+
+              const itemFieldProps = {
+                disabled: disabled?.(action) ?? isReadOnly,
+                ...fieldProps,
+              };
+
+              return (
+                <Col {...colProps}>
+                  <FormItem type={componentType} fieldProps={itemFieldProps} {...formItemProps} />
+                </Col>
+              );
+            }}
+          </Form.Item>
         );
       })}
       {children}
